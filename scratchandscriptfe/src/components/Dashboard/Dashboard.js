@@ -45,7 +45,7 @@ const Dashboard = () => {
         <Header/>
         <div className="container my-5 flex-grow-1">
             <div className="row mb-4">
-                <h4>Statistics</h4>
+                <h4>App Statistics</h4>
                 <div className="col-md-6">
                     <div className="card bg-primary text-white">
                         <div className="card-body">
