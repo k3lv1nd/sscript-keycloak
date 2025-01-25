@@ -44,26 +44,27 @@ const Dashboard = () => {
       <div className="d-flex flex-column min-vh-100 min-vh-100">
         <Header/>
         <div className="container my-5 flex-grow-1">
-      <h1 className="text-center mb-4"></h1>
-      <div className="row mb-4">
-        <div className="col-md-6">
-          <div className="card bg-primary text-white">
-            <div className="card-body">
-              <h5 className="card-title">Total Users</h5>
-              <p className="card-text fs-4">{stats.total_users}</p>
+            <div className="row mb-4">
+                <h4>Statistics</h4>
+                <div className="col-md-6">
+                    <div className="card bg-primary text-white">
+                        <div className="card-body">
+                            <h5 className="card-title">Total Users</h5>
+                            <p className="card-text fs-4">{stats.total_users}</p>
+                        </div>
+                    </div>
+                </div>
+                <div className="col-md-6">
+                    <div className="card bg-success text-white">
+                        <div className="card-body">
+                            <h5 className="card-title">Active Sessions</h5>
+                            <p className="card-text fs-4">{stats.active_sessions}</p>
+                        </div>
+                    </div>
+                </div>
             </div>
-          </div>
-        </div>
-        <div className="col-md-6">
-          <div className="card bg-success text-white">
-            <div className="card-body">
-              <h5 className="card-title">Active Sessions</h5>
-              <p className="card-text fs-4">{stats.active_sessions}</p>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div className="table-responsive">
+            <div className="table-responsive">
+          <h4>User Activity logs</h4>
         <table className="table table-striped">
           <thead>
             <tr>
