@@ -1,0 +1,51 @@
+version: '3.8'
+
+services:
+  api:
+    build: ./scratchandscriptapi
+    ports:
+      - "8000:8000"
+    environment:
+      DATABASE_URL: postgres://sscript:sscript2025!@postgres:5432/sscript
+      MONGO_URI: mongodb://mongo:27017
+    volumes:
+      - ./scratchandscriptapi:/app:rw
+
+  postgres:
+    image: postgres:latest
+    environment:
+      POSTGRES_USER: sscript
+      POSTGRES_PASSWORD: sscript2025!
+      POSTGRES_DB: sscript
+    ports:
+      - "5432:5432"
+
+  mongo:
+    image: mongo:latest
+    ports:
+      - "27017:27017"
+    volumes:
+      - ./mongo-init-scripts:/docker-entrypoint-initdb.d:ro
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: sscript
+      MONGO_INITDB_ROOT_PASSWORD: sscript2025
+      MONGO_INITDB_DATABASE: sscript
+
+  fe:
+    build: ./scratchandscriptfe
+    ports:
+      - "3000:3000"
+    volumes:
+      - ./scratchandscriptfe:/app:rw
+
+  keycloak:
+    image: quay.io/keycloak/keycloak:22.0.3
+    container_name: keycloak
+    environment:
+      - KEYCLOAK_ADMIN=admin
+      - KEYCLOAK_ADMIN_PASSWORD=admin
+    command:
+      - start-dev
+    ports:
+      - "8080:8080"
+    restart: always
